@@ -3,7 +3,11 @@ export interface Books {
 }
 
 export interface Library {
-  book: Book;
+  book: BookWithId;
+}
+
+export interface BookWithId extends Book {
+  id: string;
 }
 
 export interface Book {
@@ -16,6 +20,8 @@ export interface Book {
   ISBN:     string;
   author:   Author;
 }
+
+
 
 export interface Author {
   name:       string;

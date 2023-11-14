@@ -8,13 +8,15 @@ import { BooksComponent } from './components/books/books.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReadingListComponent } from './components/reading-list/reading-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksComponent,
     BooksListComponent,
-    DashboardComponent
+    DashboardComponent,
+    ReadingListComponent
   ],
   imports: [
     BrowserModule,

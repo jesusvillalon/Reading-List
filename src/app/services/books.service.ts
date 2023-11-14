@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, map, tap } from 'rxjs';
-import { Book, Books } from '../interfaces/books.interface';
+import { Observable, map } from 'rxjs';
+import { Book, BookWithId, Books } from '../interfaces/books.interface';
+import { v4 as uuidv4 } from 'uuid';
+
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
 
   private baseUrl: string = 'assets/data/books.json';
-  private readingList: Book[] = [];
+  private readingList: BookWithId[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -18,12 +20,17 @@ export class BooksService {
     );
   }
 
-  getReadingList(): Book[] {
+  getReadingList(): BookWithId[] {
     return this.readingList;
   }
 
   addBookToReadingList(book: Book){
-    this.readingList.push(book)
+    const bookWithId = {...book, id: uuidv4()};
+    this.readingList.push(bookWithId);
+  }
+
+  deleteBookFromReadingList(bookId: string){
+    this.readingList = this.readingList.filter(book => book.id !== bookId)
   }
 
 

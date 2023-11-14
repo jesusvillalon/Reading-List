@@ -8,16 +8,23 @@ import { BooksService } from 'src/app/services/books.service';
   styleUrls: ['./books-list.component.css']
 })
 export class BooksListComponent implements OnInit{
-  public readingList: Book[] = [];
+  public books: Book[] = [];
 
   constructor(private booksService: BooksService){}
-
   ngOnInit(): void {
-    this.getReadingList()
+    this.getAllBooks();
   }
 
-  getReadingList(){
-    this.readingList = this.booksService.getReadingList();
+  getAllBooks() {
+    this.booksService.getBooks()
+      .subscribe((library) => {
+        this.books = library;
+      });
+  }
+
+
+  onSubmit(book: Book) {
+    this.booksService.addBookToReadingList(book);
   }
 
 }

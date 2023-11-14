@@ -1,0 +1,10 @@
+<div class="main-list-container">
+  <h2 class="list-title">Lista de lectura</h2>
+  <div class="list-container">
+    <div *ngFor="let book of readingList" class="reading-list-item">
+      <button (click)="deleteBook(book)"
+      class="bookDeleteButton">&#10007;</button>
+      <img class="listed-book-img" [src]="book.cover" [alt]="book.title">
+    </div>
+  </div>
+</div>

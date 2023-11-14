@@ -1,6 +1,17 @@
-<div class="main-list-container">
-  <h2>Lista de lectura</h2>
-  <div *ngFor="let book of readingList" class="reading-list-item">
-    <img [src]="book.cover" [alt]="book.title">
+<div class="books-container">
+  <div *ngFor="let book of books" class="book-card">
+    <div class="book"
+    (click)="onSubmit(book)"
+    >
+      <div class="books-front">
+        <img class="book-img" [src]="book.cover" [alt]="book.title" />
+      </div>
+      <div class="books-back">
+        <p class="book-back-title">{{ book.title }}</p>
+        <p>{{ book.author.name }}</p>
+        <p>{{ book.year }}</p>
+        <p class="book-back-synopsis">{{ book.synopsis }}</p>
+      </div>
+    </div>
   </div>
 </div>
