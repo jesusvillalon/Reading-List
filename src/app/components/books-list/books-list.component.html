@@ -1,0 +1,6 @@
+<div class="main-list-container">
+  <h2>Lista de lectura</h2>
+  <div *ngFor="let book of readingList" class="reading-list-item">
+    <img [src]="book.cover" [alt]="book.title">
+  </div>
+</div>

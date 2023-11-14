@@ -1,0 +1,12 @@
+.main-list-container{
+  background-color: #20283ee2;
+  filter: blur(20%);
+  width: 600px;
+  height: 800px;
+  display: flex;
+  color: rgb(234, 234, 234);
+  justify-content: center;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 2px 4px 2px rgba(163, 163, 163, 0.594);
+}

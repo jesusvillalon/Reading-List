@@ -1,0 +1,28 @@
+<div class="main-books-container">
+  <h2 class="h2-title">Libros disponibles:</h2>
+  <div class="filters-books-container">
+    <div class="filteredByPage">
+      <h4 class="filter-title">Filtrar por páginas</h4>
+    </div>
+    <div class="filteredByGenre">
+      <h4 class="filter-title">Filtrar por género</h4>
+    </div>
+  </div>
+  <div class="books-container">
+    <div *ngFor="let book of books" class="book-card">
+      <div class="book"
+      (click)="onSubmit(book)"
+      >
+        <div class="books-front">
+          <img class="book-img" [src]="book.cover" [alt]="book.title" />
+        </div>
+        <div class="books-back">
+          <h5>{{ book.title }}</h5>
+          <p>{{ book.author.name }}</p>
+          <p>{{ book.year }}</p>
+          <p>{{ book.synopsis }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
