@@ -3,9 +3,17 @@
   <div class="filters-books-container">
     <div class="filteredByPage">
       <h4 class="filter-title">Filtrar por páginas</h4>
+
     </div>
     <div class="filteredByGenre">
       <h4 class="filter-title">Filtrar por género</h4>
+      <mat-form-field>
+        <mat-label>Elige un género</mat-label>
+        <mat-select [formControl]="genres" multiple>
+            <mat-option
+            ></mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
   <app-books-list/>

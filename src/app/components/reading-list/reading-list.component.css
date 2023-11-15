@@ -18,7 +18,7 @@
 .reading-list-item{
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  align-items: flex-end;
   background-color: rgba(234, 234, 234, 0.599);
   border-radius: 8px;
   margin: 5px 10px;

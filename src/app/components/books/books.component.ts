@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {FormControl} from '@angular/forms';
+import { Book } from 'src/app/interfaces/books.interface';
+import { BooksService } from 'src/app/services/books.service';
 
 
 @Component({
@@ -6,7 +9,19 @@ import { Component } from '@angular/core';
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent {
+export class BooksComponent implements OnInit{
+
+
+  public books: Book[] = [];
+  genres = new FormControl('');
+  genresList: string[] = [];
+
+  constructor(private booksService: BooksService){}
+
+  ngOnInit(): void {
+
+
+  }
 
 
 
