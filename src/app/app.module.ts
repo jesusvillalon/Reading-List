@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSliderModule} from '@angular/material/slider';
 
 import { AppComponent } from './app.component';
 import { BooksComponent } from './components/books/books.component';
@@ -29,7 +30,8 @@ import { ReadingListComponent } from './components/reading-list/reading-list.com
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

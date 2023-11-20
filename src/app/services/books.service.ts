@@ -44,11 +44,4 @@ export class BooksService {
     localStorage.setItem('readingList', JSON.stringify(this.readingList));
   }
 
-  getBooksByGenre(genre: string): Observable<Book[]> {
-    return this.getBooks().pipe(
-      map(books => books.filter(book => book.genre.includes(genre)))
-    );
-  }
-
-
 }

@@ -1,17 +1,21 @@
 <div class="main-books-container">
-  <h2 class="h2-title">Libros disponibles:</h2>
+  <h2 class="avalaibleBooks">Libros disponibles: 13</h2>
+  <h3 class="booksInReadingList">0 libros en lista de lectura</h3>
   <div class="filters-books-container">
     <div class="filteredByPage">
       <h4 class="filter-title">Filtrar por páginas</h4>
-
+      <div class="slider-container">
+        <mat-slider>
+          <input matSliderThumb>
+        </mat-slider>
+      </div>
     </div>
     <div class="filteredByGenre">
       <h4 class="filter-title">Filtrar por género</h4>
       <mat-form-field>
         <mat-label>Elige un género</mat-label>
-        <mat-select [formControl]="genres" multiple>
-            <mat-option
-            ></mat-option>
+        <mat-select [formControl]="genres" multiple (selectionChange)="applyFilterByGenre()">
+          <mat-option *ngFor="let genre of allGenres" [value]="genre">{{ genre }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>

@@ -9,6 +9,7 @@ import { BooksService } from 'src/app/services/books.service';
 })
 export class BooksListComponent implements OnInit{
   public books: Book[] = [];
+  public filteredBook: Book[] = [];
 
   constructor(private booksService: BooksService){}
   ngOnInit(): void {
@@ -19,12 +20,25 @@ export class BooksListComponent implements OnInit{
     this.booksService.getBooks()
       .subscribe((library) => {
         this.books = library;
+        this.filteredBook = library;
       });
   }
-
 
   onSubmit(book: Book) {
     this.booksService.addBookToReadingList(book);
   }
+
+  applyFilter(selectedGenres: string[]) {
+    if (selectedGenres.length === 0) {
+      this.filteredBook = this.books;
+    } else {
+      this.filteredBook = this.books.filter((book) => {
+        return selectedGenres.some((genre) => {
+          return Array.isArray(book.genre) ? book.genre.includes(genre) : book.genre === genre;
+        });
+      });
+    }
+  }
+
 
 }

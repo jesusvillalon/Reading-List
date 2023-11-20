@@ -7,7 +7,35 @@
   justify-content: space-around;
 }
 
-.h2-title {
+.avalaibleBooks, .booksInReadingList {
   text-align: center;
 }
 
+
+.slider-container{
+background-color: rgb(234, 234, 234);
+padding: 4px 5px 4px 10px;
+border-top-right-radius: 5px;
+border-top-left-radius: 5px;
+box-shadow: 2px 4px 6px rgba(98, 98, 98, 0.38);
+}
+
+mat-slider {
+  width: 250px;
+}
+mat-form-field{
+  width: 300px;
+}
+
+.mat-mdc-slider.mat-primary {
+  --mdc-slider-handle-color: #20283ee2;
+  --mdc-slider-focus-handle-color: #20283ee2;
+  --mdc-slider-hover-handle-color: #20283ee2;
+  --mdc-slider-active-track-color: #20283ee2;
+  --mdc-slider-inactive-track-color: #20283ee2;
+  --mdc-slider-with-tick-marks-active-container-color: #fff;
+  --mdc-slider-with-tick-marks-inactive-container-color: #20283ee2;
+  --mat-mdc-slider-ripple-color: #20283ee2;
+  --mat-mdc-slider-hover-ripple-color: rgba(63, 81, 181, 0.05);
+  --mat-mdc-slider-focus-ripple-color: rgba(63, 81, 181, 0.2);
+}
