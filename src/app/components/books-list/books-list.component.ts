@@ -24,11 +24,11 @@ export class BooksListComponent implements OnInit{
       });
   }
 
-  onSubmit(book: Book) {
+  addToReadingList(book: Book) {
     this.booksService.addBookToReadingList(book);
   }
 
-  applyFilter(selectedGenres: string[]) {
+  applyFilterByGenre(selectedGenres: string[]) {
     if (selectedGenres.length === 0) {
       this.filteredBook = this.books;
     } else {

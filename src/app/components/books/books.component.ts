@@ -1,40 +1,45 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Book } from 'src/app/interfaces/books.interface';
 import { BooksService } from 'src/app/services/books.service';
 import { BooksListComponent } from '../books-list/books-list.component';
 
-
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  styleUrls: ['./books.component.css'],
 })
-export class BooksComponent implements OnInit{
+export class BooksComponent implements OnInit {
   @ViewChild(BooksListComponent) booksListComponent!: BooksListComponent;
 
   public books: Book[] = [];
   public filteredBooks: Book[] = [];
+  public readingList: Book[] = [];
   public genres = new FormControl('');
   public allGenres: string[] = [];
+  public numberOfPages: number = 0;
+  public numberOfBooks?: number;
+  public maxPageValue: number = 1000;
 
-  constructor(private booksService: BooksService){}
+  constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
     this.getBooks();
   }
 
-  getBooks(){
-    this.booksService.getBooks()
-    .subscribe((library) => {
+  getBooks() {
+    this.booksService.getBooks().subscribe((library) => {
       this.books = library;
       this.filteredBooks = this.books;
       this.allGenres = this.extractAllGenres(library);
+      this.numberOfBooks = this.books.length;
+      this.maxPageValue = Math.max(...this.books.map((book) => book.pages));
+
     });
 
-  this.genres.valueChanges.subscribe(() => {
-    this.filterBooksByGenre();
-  });
+    this.genres.valueChanges.subscribe(() => {
+      this.filterBooksByGenre();
+    });
   }
 
   private extractAllGenres(library: Book[]): string[] {
@@ -55,7 +60,6 @@ export class BooksComponent implements OnInit{
     return genres;
   }
 
-
   filterBooksByGenre() {
     const selectedGenres = this.genres.value;
     if (!selectedGenres || !Array.isArray(selectedGenres)) {
@@ -70,13 +74,29 @@ export class BooksComponent implements OnInit{
   }
 
   applyFilterByGenre() {
-    const selectedGenres = Array.isArray(this.genres.value) ? this.genres.value : [this.genres.value];
-    this.booksListComponent.applyFilter(selectedGenres.filter((genre): genre is string => typeof genre === 'string'));
+    const selectedGenres = Array.isArray(this.genres.value)
+      ? this.genres.value
+      : [this.genres.value];
+    if (!selectedGenres || selectedGenres.length === 0) {
+      this.filteredBooks = this.books;
+    } else {
+      this.booksListComponent.applyFilterByGenre(
+        selectedGenres.filter(
+          (genre): genre is string => typeof genre === 'string'
+        )
+      );
+    }
   }
 
 
+  applyFilterByPages() {
+    this.filteredBooks = this.books.filter((book) => {
+      return book.pages <= this.numberOfPages && book.pages >= 0;
+    });
+
+    console.log(this.numberOfPages)
+  }
+
+
+
 }
-
-
-
-

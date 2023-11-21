@@ -12,6 +12,7 @@ export class BooksService {
   private baseUrl: string = 'assets/data/books.json';
   private readingList: BookWithId[] = [];
 
+
   constructor(private http: HttpClient) {
     const storedReadingList = localStorage.getItem('readingList');
     this.readingList = storedReadingList ? JSON.parse(storedReadingList) : [];

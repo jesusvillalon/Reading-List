@@ -1,7 +1,7 @@
 <div class="books-container">
   <div *ngFor="let book of filteredBook" class="book-card">
     <div class="book"
-    (click)="onSubmit(book)"
+    (click)="addToReadingList(book)"
     >
       <div class="books-front">
         <img class="book-img" [src]="book.cover" [alt]="book.title" />

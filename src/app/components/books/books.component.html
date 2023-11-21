@@ -1,12 +1,14 @@
 <div class="main-books-container">
-  <h2 class="avalaibleBooks">Libros disponibles: 13</h2>
-  <h3 class="booksInReadingList">0 libros en lista de lectura</h3>
+  <div >
+    <h2 class="avalaibleBooks">Libros disponibles: {{numberOfBooks}}</h2>
+  </div>
+  <h3 class="booksInReadingList">{{readingList.length}} libros en lista de lectura</h3>
   <div class="filters-books-container">
     <div class="filteredByPage">
       <h4 class="filter-title">Filtrar por páginas</h4>
       <div class="slider-container">
         <mat-slider>
-          <input matSliderThumb>
+          <input min="0" max="maxPageValue" step="10" [(ngModel)]="numberOfPages" (input)="applyFilterByPages()" matSliderThumb>
         </mat-slider>
       </div>
     </div>
@@ -20,5 +22,5 @@
       </mat-form-field>
     </div>
   </div>
-  <app-books-list/>
+  <app-books-list />
 </div>
